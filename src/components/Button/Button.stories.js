@@ -1,4 +1,3 @@
-import React from "react";
 import { Button } from "@/components/Button";
 
 export default {
@@ -8,9 +7,34 @@ export default {
 
 const Template = (args) => <Button {...args} />;
 
-// Tagline & Subtagline
-export const Tag = Template.bind({});
-Tag.args = {
-  label: "Button",
+// Primary
+export const Primary = Template.bind({});
+Primary.story = {
+  parameters: {
+    design: {
+      type: "figma",
+      url: "https://www.figma.com/file/8BWwOrlrwLRivDSMfEwvUp/Top-Navigation?node-id=7%3A172",
+    },
+  },
 };
-Tag.storyName = "With Tagline & Subtagline";
+Primary.args = {
+  primary: true,
+  label: "Primary Button",
+};
+Primary.storyName = "Primary";
+
+// Primary
+export const Secondary = Template.bind({});
+Secondary.story = {
+  parameters: {
+    design: {
+      type: "figma",
+      url: "https://www.figma.com/file/8BWwOrlrwLRivDSMfEwvUp/Top-Navigation?node-id=7%3A172",
+    },
+  },
+};
+Secondary.args = {
+  primary: false,
+  label: "Secondary Button",
+};
+Secondary.storyName = "Secondary";

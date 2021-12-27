@@ -1,15 +1,25 @@
-import React from "react";
+import classNames from "classnames";
 import PropTypes from "prop-types";
 
 /**
  * Primary UI component for user interaction
  */
-export const Button = ({ primary, backgroundColor, size, label, ...props }) => {
-  const mode = primary
-    ? "storybook-button--primary"
-    : "storybook-button--secondary";
+export const Button = ({ primary, size, label, ...props }) => {
+  const classes = classNames(
+    "flex shadow justify-center block border-2 rounded-full px-4 py-2 focus:outline-none",
+    {
+      "border-blue-600 focus:border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white":
+        !primary,
+      "text-white bg-blue-600 hover:bg-blue-700": primary,
+    },
+    {
+      "text-xs": size === "small",
+      "text-2xl": size === "large",
+    }
+  );
+
   return (
-    <button type="button" className="flex" {...props}>
+    <button type="button" className={classes} {...props}>
       {label}
     </button>
   );
@@ -20,10 +30,6 @@ Button.propTypes = {
    * Is this the principal call to action on the page?
    */
   primary: PropTypes.bool,
-  /**
-   * What background color to use
-   */
-  backgroundColor: PropTypes.string,
   /**
    * How large should the button be?
    */
@@ -39,7 +45,6 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
-  backgroundColor: null,
   primary: false,
   size: "medium",
   onClick: undefined,
